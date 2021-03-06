@@ -184,8 +184,10 @@ const registerHooks = () => {
             // original failed request
             return;
         }
-        const coverage = JSON.parse(r.stdout).coverage;
-        sendCoverage(coverage, "backend");
+        try {
+          const coverage = JSON.parse(r.stdout).coverage;
+          sendCoverage(coverage, "backend");
+        } catch {}
       });
     }
   })
